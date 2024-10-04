@@ -25,7 +25,7 @@ Example covariance matrix:
 ### Example
 ```python
 import sympy as sp
-from physicum.analytical_error_propagation import analytical_error_propagation
+from practipy.analytical_error_propagation import analytical_error_propagation
 
 m, v = sp.symbols("m v")
 sv, sm, rsm = sp.symbols("sigma_v sigma_m rho_vm")
@@ -85,7 +85,7 @@ Nothing
 
 ### Example
 ```python
-from physicum.fit_with_pull_dist import plot_fit_with_pull
+from practipy.fit_with_pull_dist import plot_fit_with_pull
 data = np.genfromtxt("/PATH/TO/THE/DATA")
 params = [1,1,1]
 fitfunc = lambda x, p: p[0] + p[1] * x + p[2] * x**2
@@ -131,7 +131,7 @@ Plots the fourier series and its coefficients for a given function.
 
 ### Example
 ```python
-from physicum.fourier import fourier
+from practipy.fourier import fourier
 T = 8.0
 x_min = -4
 x_max = 20.0
@@ -158,7 +158,7 @@ Used to find the mean and standard deviation of a single physical quantity (that
 - error_data_std: The uncertainty of the standard deviation of the data after the fit.
 ### Example
 ```python
-from physicum.nll import nll
+from practipy.nll import nll
 data = np.genfromtxt("/PATH/TO/THE/DATA")
 nll(list(data))
 ```
@@ -196,7 +196,7 @@ Plots a histogram of the data with errorbars and a normalized histogram of the d
 - error_data_std: The uncertainty of the standard deviation of the data after the fit.
 ### Example
 ```python
-from physicum.nll import plot_nll
+from practipy.nll import plot_nll
 data = np.genfromtxt("/PATH/TO/THE/DATA")
 plot_nll(
     list(data),
@@ -224,7 +224,7 @@ Plots a function and its confidence bands.
 Nothing
 ### Example
 ```python
-from physicum.confidence_bands import conficende_bands
+from practipy.confidence_bands import conficende_bands
 x0, y0, theta, v, yf, t, g = sp.symbols("x0 y0 theta v yf t g")
 s_time, s_theta = sp.symbols("sigma_t sigma_theta")
 data = {x0: 100, y0: 50, v: 200, g: -9.81}
