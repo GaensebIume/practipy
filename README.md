@@ -9,7 +9,7 @@ To install practipy:
 
 ## Usage and Documentation
 
-See the [documentation](https://github.com/Gaenseblume/practipy/blob/main/doc/Documentation.md) for more information.
+See the [documentation](https://github.com/GaensebIume/practipy/blob/main/doc/Documentation.md) for more information.
 
 ## Contributing
 
