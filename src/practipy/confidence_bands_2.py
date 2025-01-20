@@ -4,7 +4,7 @@ import sympy as sp
 from scipy.special import erfinv
 
 
-def conficende_bands(
+def confidence_bands(
     function: sp.core.function.Function,
     values: dict[str, float | int],
     variables_mean: float | int,
@@ -17,6 +17,39 @@ def conficende_bands(
     colors: list[str] = ["blue", "green", "red"],
     is_sigma: bool = False,
 ) -> None:
+    """
+    Function to plot confidence bands for a given function.
+
+    Parameters:
+    ----------
+    function : sp.core.function.Function
+        The function to plot.
+    values : dict[str, float | int]
+        A dictionary containing the constant values of the variables.
+    variables_mean : float | int
+        The mean value of the variables.
+    std : list[int | float]
+        A list containing the standard deviations of the variables.
+    variables : list[sp.Symbol]
+        A list containing the variables.
+    interval : list[int]
+        A list containing the interval for the plot.
+    function_label : str, optional
+        The label for the function. Defaults to "Function".
+    function_color : str, optional
+        The color for the function. Defaults to "black".
+    confidence_levels : list[float | int], optional
+        A list containing the confidence levels. Defaults to [0.6827, 0.9545, 0.9973].
+    colors : list[str], optional
+        A list containing the colors for the confidence levels. Defaults to ["blue", "green", "red"].
+    is_sigma : bool, optional
+        Whether the confidence levels are in sigma or not. Defaults to False.
+
+    Returns
+    -------
+    None
+        The function plots the confidence bands.
+    """
     assert len(confidence_levels) == len(colors)
     assert len(interval) == 3
     if not is_sigma:
@@ -82,7 +115,7 @@ if __name__ == "__main__":
     std_values = [stdThetaVal, 0]
     f = y0 + v * sp.sin(theta) * t + sp.Rational(1, 2) * g * t**2
 
-    conficende_bands(
+    confidence_bands(
         function=f,
         values=data,
         std=std_values,

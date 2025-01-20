@@ -13,7 +13,7 @@ def plot_fit_with_pull(
     x_label: str,
     plot_y_label: str,
     pull_y_label: str,
-    x_label: str,
+    normal_x_label: str,
     plot_title: str,
     normal_title: str,
     filename_plot: str = "dataFit.jpg",

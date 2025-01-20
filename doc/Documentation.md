@@ -224,7 +224,7 @@ Plots a function and its confidence bands.
 Nothing
 ### Example
 ```python
-from practipy.confidence_bands import conficende_bands
+from practipy.confidence_bands import confidcende_bands
 x0, y0, theta, v, yf, t, g = sp.symbols("x0 y0 theta v yf t g")
 s_time, s_theta = sp.symbols("sigma_t sigma_theta")
 data = {x0: 100, y0: 50, v: 200, g: -9.81}
@@ -235,7 +235,7 @@ variable = [theta, t]
 stds = [s_theta, s_time]
 std_values = [np.pi / 180, 0]
 h = y0 + v * sp.sin(theta) * t + sp.Rational(1, 2) * g * t**2
-conficende_bands(
+confidcende_bands(
         function=h,
         values=data,
         variables_mean=[theta_val],
