@@ -2,6 +2,7 @@ import numpy as np
 import sympy as sp
 from matplotlib import pyplot as plt
 from scipy.optimize import fsolve
+import tikzplotlib
 
 
 def nll(
@@ -82,6 +83,7 @@ def plot_nll(
     error_color: str = "red",
     fit_color: str = "green",
     mean_color: str = "yellow",
+    filename: str = "",
 ) -> tuple[float, float, float, float]:
     """
     Finds the mean and standard deviation of a (single) physical quantity
@@ -92,6 +94,44 @@ def plot_nll(
     ----------
     data : list[int | float]
         A list of data points.
+    xlabel : str
+        The label for the x-axis.
+    ylabel : str
+        The label for the y-axis.
+    ylabel_density : str
+        The label for the y-axis of the density plot.
+    datalabel : str
+        The label for the data.
+    errorlabel : str
+        The label for the uncertainty.
+    fitlabel : str
+        The label for the fit.
+    meanlabel : str
+        The label for the mean.
+    mean_unit : str
+        The unit of the mean.
+    suptitle : str
+        The title of the plot.
+    subtitle1 : str
+        The subtitle of the plot.
+    subtitle2 : standard
+        The subtitle of the plot.
+    size : int
+        The size of the x-axis.
+    capsize : int
+        The size of the caps of the error bars.
+    hist_bins : int
+        The number of bins for the histogram.
+    hist_color : str
+        The color of the histogram.
+    error_color : str
+        The color of the error bars.
+    fit_color : str
+        The color of the fit.
+    mean_color : str
+        The color of the mean.
+    filename : str
+        Saves the plot as a tikz file, if filename is not empty.
 
     Returns
     -------
@@ -157,6 +197,8 @@ def plot_nll(
     plt.legend()
     plt.title(subtitle2)
     plt.suptitle(suptitle)
+    if filename != "":
+        tikzplotlib.save(filename + ".tex")
     plt.show()
     return mu, e_mu, sigma, e_sigma
 

@@ -79,6 +79,7 @@ Performs a least-sqaure optimization on the pull function a function given a dat
 - data_error_color: The color for the error of the data.
 - dpi: The dpi for the plot.
 - maxfev: The maximum number of function evaluations performed by scipy.optimize.leastsq.
+- filename: Saves the plot as a tikz file. Do not incluse the .tex extension in the string.
 
 ### Returns
 Nothing
@@ -122,6 +123,7 @@ Plots the fourier series and its coefficients for a given function.
 - colors_passed: Must be set to True to use the colors in fourrier_colors.
 - points: The number of points sampled from the function to draw the plots.
 - padding: Padding factor for the y-axis.
+- filename: Saves the plot as a tikz file. Do not incluse the .tex extension in the string.
 
 ### Returns
 - ak_values: The values of the a_k coefficients.
@@ -189,6 +191,8 @@ Plots a histogram of the data with errorbars and a normalized histogram of the d
 - error_color: The color for the error bars.
 - fit_color: The color for the fit.
 - mean_color: The color for the mean.
+- filename: Saves the plot as a tikz file. Do not incluse the .tex extension in the string.
+
 ### Returns
 - data_mean_fit: The mean of the data after the fit.
 - error_data_mean: The uncertainty of the mean of the data after the fit.
@@ -220,6 +224,8 @@ Plots a function and its confidence bands.
 - function_color: The color of the function.
 - colors: The colors of the confidence bands.
 - filename: The filename of the saved plot.
+- filename: Saves the plot as a tikz file. Do not incluse the .tex extension in the string.
+
 ### Returns
 Nothing
 ### Example
@@ -244,12 +250,27 @@ confidcende_bands(
         time_interval=timeInt,
 )
 ```
+# How to use the tikz code
+The file is saved in the current working directory. The filename is appended with .tex.
+To use the picture you need to add the following to the top of the document:
+```latex
+\usepackage{pgfplots}
+```
+To embed the picture in the document, use the following code:
+```latex
+\input{PATH/TO/FILE/FILENAME.tex}
+```
+If the document is in the same directory as the tikz file, you can use the following code:
+```latex
+\input{FILENAME.tex}
+```
 # Dependencies
 - sympy
 - matplotlib
 - numpy
 - scipy
 - (typing)
+- tikzplotlib
 # WIP Features
 - Discrete Fourier transform
 - Time synced plots (plot mulitplie measurements synchronized at a characteristic feature (e.g. slope reaches threshold for the first time))

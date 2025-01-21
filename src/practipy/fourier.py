@@ -1,5 +1,5 @@
 from typing import Callable
-
+import tikzplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
@@ -30,6 +30,7 @@ def fourier_series(
     colors_passed: bool = False,
     points: int = 1000,
     padding: float = 1.1,
+    filename: str = "",
 ) -> tuple[list[float], list[float], list[float], list[float]]:
     """
     Plots the fourier series (after multiple steps (use plts t odefine how many))
@@ -83,6 +84,8 @@ def fourier_series(
             The number of points for the x-axis. Defaults to 1000.
         padding (float, optional):
             The padding for the y-axis. Defaults to 1.1.
+        filename (str, optional):
+            Saves the plot as a tikz file, if filename is not empty.
 
         Returns:
             tuple[list[float], list[float], list[float], list[float]]:
@@ -221,6 +224,8 @@ def fourier_series(
                 )
                 # plt.plot(x_values, fouries_values, label=f"k = {k}")
     plt.savefig(filename)
+    if filename != "":
+        tikzplotlib.save(filename)
     plt.show()
 
     return ak_values, bk_values, ak_errors, bk_error

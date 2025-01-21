@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sympy as sp
 from scipy.special import erfinv
+import tikzplotlib
 
 
 def confidence_bands(
@@ -16,6 +17,7 @@ def confidence_bands(
     confidence_levels: list[float | int] = [0.6827, 0.9545, 0.9973],
     colors: list[str] = ["blue", "green", "red"],
     is_sigma: bool = False,
+    filename: str = "",
 ) -> None:
     """
     Function to plot confidence bands for a given function.
@@ -44,6 +46,8 @@ def confidence_bands(
         A list containing the colors for the confidence levels. Defaults to ["blue", "green", "red"].
     is_sigma : bool, optional
         Whether the confidence levels are in sigma or not. Defaults to False.
+    filename : str, optional
+        Saves the plot as a tikz file, if filename is not empty.
 
     Returns
     -------
@@ -97,6 +101,8 @@ def confidence_bands(
         )
     plt.legend()
     plt.ylim(0, 1300)
+    if filename != "":
+        tikzplotlib.save(filename + ".tex")
     plt.show()
 
 

@@ -1,5 +1,5 @@
 from typing import Callable
-
+import tikzplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import leastsq as leastsq
@@ -30,6 +30,7 @@ def plot_fit_with_pull(
     data_error_color: str = "blue",
     dpi: int = 1000,
     maxfev: int = 10000,
+    filename: str = "",
 ) -> None:
     """
     Plots the data and the fit with the pull distribution. Plots the normal distribution of the pulls.
@@ -92,6 +93,8 @@ def plot_fit_with_pull(
         The dpi for the plot, by default 1000
     maxfev : int, optional
         The maximum number of function evaluations, by default 10000
+    filename_plot : str, optional
+        Saves the plot as a tikz file, if filename is not empty.
     """
     x = data[:, 0]
     y = data[:, 1]
@@ -164,6 +167,8 @@ def plot_fit_with_pull(
     plt.subplots_adjust(hspace=0)
     plt.gca().axhline(y=0, color=zero_axis_color, linewidth=2)
     plt.savefig(filename_plot, dpi=dpi)
+    if filename_plot != "":
+        tikzplotlib.save(filename_plot + ".tex")
     plt.show()
 
     # Normal distribution of pulls, if fit is good.
@@ -176,6 +181,8 @@ def plot_fit_with_pull(
     plt.xlabel(normal_x_label)
     plt.ylabel(normal_y_label)
     plt.savefig(filename_normal, dpi=dpi)
+    if filename_normal != "":
+        tikzplotlib.save(filename + "_normal.tex")
     plt.show()
 
 
